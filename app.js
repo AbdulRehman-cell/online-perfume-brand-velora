@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -22,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ✅ session middleware
 app.use(session({
-  secret: "supersecretkey",   // you can replace this with a strong random string
+   secret: process.env.SESSION_SECRET,   // you can replace this with a strong random string
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false }   // secure: true if using HTTPS
