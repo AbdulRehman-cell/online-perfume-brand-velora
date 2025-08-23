@@ -703,7 +703,7 @@
             <div style="font-weight:700">Media</div>
               <a href = "https://www.instagram.com/velorabyhk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i> instagram</a>
               <br>
-              <a href="https://wa.me/92310175839" target="_blank"><i class="fab fa-whatsapp"></i> whatsapp</a>
+              <a href="https://wa.me/923107175839" target="_blank"><i class="fab fa-whatsapp"></i> whatsapp</a>
 </a>
             <div class="muted"></div>
           </div>
@@ -731,35 +731,6 @@
 
   </div>
 
-  <!-- PRODUCT MODAL -->
-  <div id="productModal" class="modal" aria-hidden="true">
-    <div class="modal-card">
-      <img id="modalImg" src="/images/productimg/" alt="product large" />
-      <div style="flex:1">
-        <h2 id="modalTitle">Velora — Fresh & Clean</h2>
-        <br>
-        <div class="muted">50 ml • Eau de Parfum</div>
-        <br>
-        <div>
-          <p style="margin-top:12px" id="modalDesc">A luminous composition of citrus and marine notes that opens bright
-            and dries down to a soft musky finish. Balanced for day and evening.</p>
-        </div>
-        <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
-          <div style="font-weight:800;font-size:20px" id="modalPrice"></div>
-        </div>
-        <br>
-        <% products.forEach((product)=>{ %>
-          <a href="/order/<%= product.id %>"><button class="btn btn-primary" id="addToCartModal"
-              style="padding:10px 14px" width="150px">BUY NOW</button></a>
-          <% }) %>
-            <br>
-            <br>
-
-            <button class="btn btn-outline" id="closeModalBtn" onclick="closeModal()" width="100px">Close</button>
-
-      </div>
-    </div>
-  </div>
 
 
 

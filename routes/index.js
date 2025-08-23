@@ -104,7 +104,7 @@ router.post('/contact', async function (req, res) {
   <br>
   
   p>If there is any other query,</p>
-        <a href="https://wa.me/92310175839" target="_blank">
+        <a href="https://wa.me/923107175839" target="_blank">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
        alt="WhatsApp" width="24" height="24" style="vertical-align:middle; border:none;">
 </a>
@@ -415,7 +415,7 @@ router.get("/confirmation/:id", async (req, res) => {
         <br>
        
         <p>If there is any other query,</p>
-        <a href="https://wa.me/92310175839" target="_blank">
+        <a href="https://wa.me/923107175839" target="_blank">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
        alt="WhatsApp" width="24" height="24" style="vertical-align:middle; border:none;">
 </a>
@@ -489,7 +489,7 @@ router.get("/inquiry/:id", async (req, res) => {
     <br>
     
     p>If there is any other query,</p>
-        <a href="https://wa.me/92310175839" target="_blank">
+        <a href="https://wa.me/923107175839" target="_blank">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
        alt="WhatsApp" width="24" height="24" style="vertical-align:middle; border:none;">
 </a>
