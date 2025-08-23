@@ -100,8 +100,10 @@
     <div class="detail"><strong>Name:</strong> <%= order.name %></div>
     <div class="detail"><strong>Address:</strong> <%= order.address %></div>
     <div class="detail"><strong>Contact number:</strong> <%= order.phone %></div>
-    <div class="detail"><strong>Product</strong> <%= order.title %></div>
-    <div class="detail"><strong>Price</strong> PKR<%=order.price %>.00</div>
+    <div class="detail"><strong>Product:</strong> <%= order.title %></div>
+    <div class="detail"><strong>Price</strong> RS: <%=order.price %>.00</div>
+    <div class="detail"><strong>Date :</strong><%=order.date %></div>
+
   
     <div class="detail"><strong>Quantity:</strong> <%= order.quantity %></div>
     <div class="detail"><strong>Total Amount:</strong>RS: <%= order.price*order.quantity %>.00</div>
@@ -125,7 +127,8 @@
     <div class="detail"><strong>Address:</strong> <%= order.address %></div>
     <div class="detail"><strong>Contact number:</strong> <%= order.phone %></div>
     <div class="detail"><strong>Product</strong> <%= order.title %></div>
-    <div class="detail"><strong>Price</strong> PKR<%=order.price %>.00</div>
+    <div class="detail"><strong>Price</strong> RS: <%=order.price %>.00</div>
+    <div class="detail"><strong>Date :</strong><%=order.date %></div>
   
     <div class="detail"><strong>Quantity:</strong> <%= order.quantity %></div>
     <div class="detail"><strong>Total Amount:</strong>RS: <%= order.price*order.quantity %>.00</div>
@@ -160,7 +163,8 @@
     <div class="detail"><strong>Address:</strong> <%=address %></div>
     <div class="detail"><strong>Contact number:</strong> <%=phone %></div>
     <div class="detail"><strong>Product</strong> <%=title %></div>
-    <div class="detail"><strong>Price</strong> PKR<%=price %>.00</div>
+    <div class="detail"><strong>Price</strong> RS: <%=price %>.00</div>
+    
   
           <div class="detail"><strong>Quantity:</strong> <%= quantity %></div>
     <div class="detail"><strong>Total Amount:</strong>RS: <%= price*quantity %>.00</div>

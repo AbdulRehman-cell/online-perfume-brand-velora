@@ -49,6 +49,11 @@ const orderSchema = new mongoose.Schema({
     type:String,
 
   }
+  ,
+   date: {
+    type: Date,
+    default: Date.now  // stores current date & time automatically
+  }
   // Add any additional fields you need
 
 
