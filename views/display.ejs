@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velora Éclat Noir - Product Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background: #1a1a1a;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-top: 40px;
+    }
+
+    .product-img img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .product-info h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .product-info p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #f4b400;
+      margin: 20px 0;
+    }
+
+    .order-form {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .order-form h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .order-form input, 
+    .order-form select {
+      width: 95%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: #fff;
+    }
+
+    .order-form button {
+      background: #f4b400;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .order-form button:hover {
+      background: #d99a00;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Product Image -->
+    <div class="product-img">
+      <img src="/images/productimg/<%= order.image %>" alt="Velora">
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <h1><%= order.title %></h1>
+      <p><%= order.details %><p><strong>Fragrance Notes:</strong><%= order.notes %></p>
+      <p class="price">PKR : <%= order.price %></p>
+
+      <!-- Order Form -->
+      <div class="order-form">
+        <h2>Place Your Order</h2>
+        <form action="/order/<%=order._id%>" method="POST" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="text" name="phone" placeholder="Phone Number" required>
+          <input type="text" name="address" placeholder="Delivery Address" required>
+          <select name="quantity" id="quantity" required>
+            <option value="">Select Quantity</option>
+            <option value= 1>1 Bottle</option>
+            <option value= 2>2 Bottles</option>
+            <option value= 3>3 Bottles</option>
+            <option value= 4>4 Bottles</option>
+            <option value= 5>5 Bottles</option>
+          </select>
+          <h2>Complete Your Payment</h2>
+
+          <br>
+          
+
+
+          <div id="totalAmount"></div>
+
+          <br>
+
+          
+         
+          
+          <select id="method" name="method" required onchange="showDetails(this.value)">
+        <option value="">-- Select Payment Method --</option>
+        <option value="easypaisa">Easypaisa</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
+
+       <div id="paymentDetails" class="account-info" style="display:none;"></div>
+       <br>
+       <br>
+
+ <div>Upload Payment Proof</div>
+ <br>
+      <input type="file" id="proof" name="proof" accept="image/*,.pdf" required>
+
+
+          <button type="submit">Confirm Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+
+  <script>
+  function showDetails(value) {
+    const details = document.getElementById("paymentDetails");
+    if (value === "easypaisa") {
+      details.style.display = "block";
+      details.innerHTML =
+        "<b>Easypaisa Number:</b> 03275405747<br><b>Account Name:</b> Huzaifa khalid";
+    } else if (value === "bank") {
+      details.style.display = "block";
+      details.innerHTML =
+        "<b>Bank:</b> Meezan Bank<br><b>Account No:</b> 00300111258935<br><b>Account Title:</b> Huzaifa khalid";
+    } else {
+      details.style.display = "none";
+    }
+  }
+
+  window.onload = function () {
+    const price =Number("<%= order.price %>"); // product price from server
+    const quantitySelect = document.getElementById("quantity");
+    const totalAmountDiv = document.getElementById("totalAmount");
+
+    if (quantitySelect) {
+      quantitySelect.addEventListener("change", () => {
+        const qty = parseInt(quantitySelect.value);
+        if (!isNaN(qty)) {
+          const total = qty * price;
+          totalAmountDiv.innerText = `Total Amount: PKR ${total}`;
+        } else {
+          totalAmountDiv.innerText = "";
+        }
+      });
+    }
+  };
+</script>
+
+
+</html>

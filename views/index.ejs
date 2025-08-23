@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Velora by HK — Fragrance Redefined</title>
+  <meta name="description"
+    content="Velora by HK — premium perfume collection. Shop fragrances, read articles, discover notes and story behind each scent." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --card: #0e0e0f;
+      --muted: #bdbdbd;
+      --accent: #0aa39b;
+      --gold: #c59b46;
+      --glass: rgba(255, 255, 255, 0.04);
+      --max-width: 1200px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(180deg, #070707 0%, #070707 100%);
+      color: #fff
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 28px
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+      
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      letter-spacing: 1px
+    }
+
+    .logo .title {
+      font-size: 22px
+    }
+
+    .logo .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500
+    }
+
+    nav a:hover {
+      color: orange;
+    }
+
+    .cta {
+      background: var(--gold);
+      color: #0b0b0b;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700
+    }
+
+    .cta:hover {
+      background: linear-gradient(135deg, var(--gold), #fdd75f);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* active: press back down */
+    .cta:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+      width: 100%;
+      text-align: end;
+      background: none;
+      border: none;
+      color: white;
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      float: right;
+    }
+
+    #hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+      align-items: space-around;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: var(--muted);
+      display: flex;
+      border-radius: 3px;
+      margin-top: 5px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 40px;
+      align-items: center;
+      padding: 36px 0
+    }
+
+    .hero-left {
+      max-width: 640px
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 12px 0;
+      line-height: 1.03
+    }
+
+    p.lead {
+      color: var(--muted);
+      max-width: 56ch
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #001;
+      text-transform: uppercase;
+      font-weight: 700
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted)
+    }
+
+    /* Hover: brighter accent + lift */
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 85%, white 15%));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    /* Active: press back down */
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Active: press down */
+    .btn-outline:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.06);
+    }
+
+
+    /* Product card */
+    .product-showcase {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6)
+    }
+
+    .bottle {
+      width: 100%;
+      height: 420px;
+      background: linear-gradient(180deg, #022 20%, #034 80%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .bottle img {
+      width: 100%;
+      height: 420px;
+      object-fit: fill
+    }
+
+    .bottle img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      filter: brightness(1.08) saturate(1.05);
+    }
+
+    .price {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+
+    /* Collections & grid */
+    .section {
+      padding: 48px 0
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px
+    }
+
+    .card {
+      background: var(--card);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid var(--glass)
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px
+    }
+
+    .card h3 {
+      margin: 12px 0 6px
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    /* Articles */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    /* Footer */
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 36px
+    }
+
+    .footer-grid {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap
+    }
+
+    /* Responsive */
+    @media (max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr 320px
+      }
+
+      .grid,
+      .articles-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media (max-width:680px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .hero {
+        padding-bottom: 0
+      }
+
+      .hero-left h1 {
+        font-size: 32px
+      }
+
+      .grid,
+      .articles-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+
+      .logo .title {
+        font-size: 18px
+      }
+
+      nav {
+        display: none
+      }
+
+      #hamburger {
+        display: block;
+      }
+
+      .mobile-nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        right: 16px;
+        background: var(--card);
+        border: 1px solid var(--glass);
+        padding: 16px;
+        border-radius: 10px;
+        width: 240px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .28s ease
+      }
+
+      .mobile-nav.active {
+        display: block;
+        max-height: 480px
+      }
+
+      .mobile-nav a {
+        display: block;
+        padding: 8px 0;
+        color: var(--muted)
+      }
+
+      .mobile-nav .cta {
+        width: 100%;
+        text-align: center
+      }
+
+      .close-btn {
+        display: block;
+      }
+
+
+      /* mobile nav (popup) */
+      .mobile-nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        right: 16px;
+        background: var(--card);
+        border: 1px solid var(--glass);
+        padding: 16px;
+        border-radius: 10px;
+        width: 240px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .28s ease
+      }
+
+      .mobile-nav.active {
+        display: block;
+        max-height: 480px
+      }
+
+      .mobile-nav a {
+        display: block;
+        padding: 8px 0;
+        color: var(--muted);
+        text-decoration: none;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      .mobile-nav .cta {
+        width: 100%;
+        text-align: center
+      }
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      visibility: hidden;
+      opacity: 0;
+      transition: all .18s
+    }
+
+    .modal.open {
+      visibility: visible;
+      opacity: 1
+    }
+
+    .modal-card {
+      background: #0b0b0c;
+      padding: 18px;
+      border-radius: 12px;
+      max-width: 900px;
+      width: 96%;
+      display: flex;
+      gap: 18px
+    }
+
+    .modal-card img {
+      width: 360px;
+      height: 360px;
+      object-fit: contain
+    }
+
+    /* Tiny helpers */
+    .small {
+      font-size: 13px
+    }
+
+    .muted-2 {
+      color: #9f9f9f
+    }
+
+    .dark-theme {
+      background-color: #121212;
+      color: white;
+    }
+
+    .light-theme {
+      background-color: white;
+      color: black;
+    }
+
+    header {
+      padding: 1em;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <div class="title">Velora</div>
+          <div class="subtitle">By HK</div>
+        </div>
+      </div>
+
+
+      <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav id="navDesktop">
+
+        <a href="#products">Products</a>
+        <a href="#articles">Articles</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="/record">Orders</a>
+
+        <button class="cta" id="shopNow">Shop Now</button>
+      </nav>
+
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <button class="close-btn" aria-label="Close menu">✕</button>
+        <a href="#products">Products</a>
+        <a href="#articles">Journal</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="/record">Orders</a>
+        <button class="cta" id="shopNowMobile">Shop Now</button>
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">Fragrance Redefined</div>
+        <h1>Velora — a modern classic for those who appreciate subtle elegance.</h1>
+        <p class="lead">Crafted with refined notes that last from morning to night. Explore our Eau de Parfum
+          collection, discover scent stories and choose a signature perfume that fits your mood.</p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="openShow" onclick="window.location='#products'">Explore the
+            Products</button>
+          <button class="btn btn-outline" onclick="window.location='#articles'">Read Our Journal</button>
+        </div>
+
+        <div style="margin-top:20px;color:var(--muted);font-size:13px"><b>Free shipping across whole Pakistan • Secure
+            payments</b> • Fast response.</div>
+      </div>
+
+      <div class="product-showcase">
+        <!-- replace the src with your product image paths -->
+        <div class="bottle">
+          <img src="\images\image.png" alt="Velora perfume bottle" id="showcaseImg" />
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section id="products" class="section">
+
+      <div class="section-title">
+        <div>
+          <h2 style="margin:0">Our Collection</h2>
+          <div class="muted">Explore signature scents and limited editions</div>
+          <br>
+        </div>
+
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- Product Cards (swap images) -->
+        <% products.forEach((product,i)=>{ %>
+          <div class="card">
+            <img src="\images\productimg\<%=product.image%>" alt="Velora" />
+            <h3>
+              <%=product.title%>
+            </h3>
+            <div class="muted">
+              Fragrance Notes: <%=product.notes%>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+              <div style="font-weight:700">PKR : <%=product.price%>
+              </div>
+              <a href="/order/<%=product.id%>"><button class="btn btn-outline">View</button></a>
+            </div>
+
+          </div>
+          <% }) %>
+
+
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles" class="section">
+      <div class="section-title">
+        <div>
+          <h2 style="margin:0">Journal</h2>
+          <div class="muted">Stories, guides and the art of scent</div>
+        </div>
+
+      </div>
+
+      <div class="articles-grid" style="margin-top:20px">
+        <% articles.forEach(article=>{ %>
+          <article class="card">
+            <img src="/images/productimg/<%=article.image%>" alt="article" />
+            <h3>
+              <%= article.header %>
+            </h3>
+            <p class="muted">
+              <%= article.shortdescription %>
+            </p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+              <div class="muted-2 small">By HK • <%=article.time%> min read</div><a href="/article/<%= article.id %>"
+                class="small">Read</a>
+            </div>
+          </article>
+          <% }) %>
+
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT -->
+    <section id="about" class="section">
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1;min-width:300px">
+          <h2>About Velora</h2>
+          <p class="muted para">Velora by HK is a boutique fragrance label dedicated to crafting memorable scents using
+            responsibly sourced raw materials. Each formula is hand-blended and aged to achieve balance and longevity.
+          </p>
+          <ul class="muted" style="margin-top:12px">
+            <li>Small-batch production</li>
+            <li>Environmental responsibility</li>
+            <li>Free shipping across all Pakistan</li>
+          </ul>
+        </div>
+
+        <div style="width:360px;min-width:260px" id="contact">
+          <h3>Contact & Orders</h3>
+          <% if(sent===2){ %>
+            <form id="contactForm" class="card" action="/contact" method="post"
+              style="display:flex;flex-direction:column;gap:10px">
+              <input name="name" placeholder="Full name" required
+                style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#fff" />
+              <input name="email" type="email" placeholder="Email" required
+                style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#fff" />
+              <textarea name="message" rows="4" placeholder="Message or order details"
+                style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#fff"></textarea>
+              <div style="display:flex;gap:10px;justify-content:space-between;align-items:center">
+                <button class="btn btn-primary" type="submit">Send Message</button>
+                <div class="small muted">Or email: velorabyhk@gmail.com</div>
+              </div>
+            </form>
+            <% }else{ %>
+              <h3><b>
+                  <%=name%> thanks for contacting
+                </b>.You will recieve a responsive email shortly</h3>
+              <%}%>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">Velora</div>
+          <div class="muted" style="max-width:30ch">By HK — Fragrance Redefined. Handcrafted scents, responsibly
+            sourced.</div>
+        </div>
+
+        <div class="footer-grid">
+
+           <div style="min-width:160px">
+            <div style="font-weight:700">Media</div>
+              <a href = "https://www.instagram.com/velorabyhk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i> instagram</a>
+              <br>
+              <a href="https://wa.me/92310175839" target="_blank"><i class="fab fa-whatsapp"></i> whatsapp</a>
+</a>
+            <div class="muted"></div>
+          </div>
+ 
+
+
+          <div style="min-width:160px">
+            <div style="font-weight:700">Shop</div>
+            <div class="muted">Products • Limited editions • Gift sets</div>
+          </div>
+
+          <div style="min-width:160px">
+            <div style="font-weight:700">Support</div>
+            <div class="muted">Shipping • Returns • Contact</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted small">© 2025 Velora by HK — All rights reserved.</div>
+        <div class="muted small">Made with care • <a href="/privacy">Privacy</a> • <a href="/terms">Terms</a> </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <img id="modalImg" src="/images/productimg/" alt="product large" />
+      <div style="flex:1">
+        <h2 id="modalTitle">Velora — Fresh & Clean</h2>
+        <br>
+        <div class="muted">50 ml • Eau de Parfum</div>
+        <br>
+        <div>
+          <p style="margin-top:12px" id="modalDesc">A luminous composition of citrus and marine notes that opens bright
+            and dries down to a soft musky finish. Balanced for day and evening.</p>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
+          <div style="font-weight:800;font-size:20px" id="modalPrice"></div>
+        </div>
+        <br>
+        <% products.forEach((product)=>{ %>
+          <a href="/order/<%= product.id %>"><button class="btn btn-primary" id="addToCartModal"
+              style="padding:10px 14px" width="150px">BUY NOW</button></a>
+          <% }) %>
+            <br>
+            <br>
+
+            <button class="btn btn-outline" id="closeModalBtn" onclick="closeModal()" width="100px">Close</button>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+    // Simple product data for modal lookup
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const navDesktop = document.getElementById('navDesktop');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // SAFETY checks
+
+    hamburger.addEventListener('click', () => {
+
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+      mobileNav.classList.toggle('active');
+
+    });
+
+
+    function closeMenu() {
+      mobileNav.classList.remove('active');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = ''; // restore scroll
+    }
+
+
+
+
+    closeBtn.addEventListener('click', closeMenu);
+
+
+
+
+    const themeToggle = document.getElementById("themeToggle");
+    const currentTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+
+
+    function openModal(title, img, desc, price) {
+      const modal = document.getElementById('productModal');
+      document.getElementById('modalImg').src += img;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalPrice').textContent = `PKR :${price}`;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      const modal = document.getElementById('productModal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('modalImg').src = '/images/productimg/';
+    }
+    document.getElementById('openShow').addEventListener('click', () => openModal(title, img, desc, price));
+    document.getElementById('shopNow').addEventListener('click', () => { window.location = '#products' });
+
+    // contact form handling (demo only)
+
+
+    // close modal with escape and backdrop click
+    document.getElementById('productModal').addEventListener('click', (e) => { if (e.target.id === 'productModal') closeModal(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  </script>
+
+  <!-- NOTES for usage: Replace image files in the ./images/ folder with your product and article images. Use the provided high-resolution photos for best results. -->
+</body>
+
+</html>

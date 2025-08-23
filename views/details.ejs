@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .detail {
+      margin-bottom: 15px;
+    }
+    .detail strong {
+      display: inline-block;
+      width: 200px;
+      color: #444;
+    }
+    .proof-img {
+      max-width: 300px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background: #0056b3;
+    }
+    .del-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: red;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background: #ffffff;
+      color: #333;
+    }
+
+     .confirm-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #00ff22;
+      color: #000000;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  
+
+     .inquiry-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #ff5100;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background: #ffffff;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Order Details (CONFIRMED)</h2>
+
+    <% if (admin === 4){ %>
+       
+    <div class="detail"><strong>Email:</strong> <%= order.email %></div>
+    <div class="detail"><strong>Name:</strong> <%= order.name %></div>
+    <div class="detail"><strong>Address:</strong> <%= order.address %></div>
+    <div class="detail"><strong>Contact number:</strong> <%= order.phone %></div>
+    <div class="detail"><strong>Product</strong> <%= order.title %></div>
+    <div class="detail"><strong>Price</strong> PKR<%=order.price %>.00</div>
+  
+    <div class="detail"><strong>Quantity:</strong> <%= order.quantity %></div>
+    <div class="detail"><strong>Total Amount:</strong>RS: <%= order.price*order.quantity %>.00</div>
+    <div class="detail">
+      <strong>Payment Proof:</strong><br>
+      <% if (order.proof) { %>
+        <img src="/images/productimg/<%= order.proof %>" alt="Payment Proof" class="proof-img">
+      <% } else { %>
+        No proof uploaded.
+      <% } %>
+    </div>
+
+    <a href="/record" class="back-btn">⬅ Back </a>
+    <% } %>
+
+
+    <% if (admin === 3){ %>
+       
+    <div class="detail"><strong>Email:</strong> <%= order.email %></div>
+    <div class="detail"><strong>Name:</strong> <%= order.name %></div>
+    <div class="detail"><strong>Address:</strong> <%= order.address %></div>
+    <div class="detail"><strong>Contact number:</strong> <%= order.phone %></div>
+    <div class="detail"><strong>Product</strong> <%= order.title %></div>
+    <div class="detail"><strong>Price</strong> PKR<%=order.price %>.00</div>
+  
+    <div class="detail"><strong>Quantity:</strong> <%= order.quantity %></div>
+    <div class="detail"><strong>Total Amount:</strong>RS: <%= order.price*order.quantity %>.00</div>
+    <div class="detail">
+      <strong>Payment Proof:</strong><br>
+      <% if (order.proof) { %>
+        <img src="/images/productimg/<%= order.proof %>" alt="Payment Proof" class="proof-img">
+      <% } else { %>
+        No proof uploaded.
+      <% } %>
+    </div>
+
+    <a href="/admin" class="back-btn">⬅ Back </a>
+    <br>
+    <a href="/deldetail/<%=order.id %>" class="del-btn" color="red">Delete details</a>
+    <br>
+    <% if (order.status==="processing" || order.status==="under inquiry") { %>
+    <a href="/confirmation/<%=order.id %>" class="confirm-btn">Send confirmation Email</a>
+    <% } else { %>
+      <% } %>
+    <br>
+     <% if (order.status==="confirmed" || order.status==="processing") { %>
+        <a href="/inquiry/<%=order.id %>" class="inquiry-btn" >Send Inquiry Email</a>
+      <% } else { %>
+      <% } %>
+
+
+     <% }if (admin!==3 && admin!==4){ %>
+       
+    <div class="detail"><strong>Email:</strong> <%=email %></div>
+    <div class="detail"><strong>Name:</strong> <%=name %></div>
+    <div class="detail"><strong>Address:</strong> <%=address %></div>
+    <div class="detail"><strong>Contact number:</strong> <%=phone %></div>
+    <div class="detail"><strong>Product</strong> <%=title %></div>
+    <div class="detail"><strong>Price</strong> PKR<%=price %>.00</div>
+  
+          <div class="detail"><strong>Quantity:</strong> <%= quantity %></div>
+    <div class="detail"><strong>Total Amount:</strong>RS: <%= price*quantity %>.00</div>
+    <div class="detail">
+      <strong>Payment Proof:</strong><br>
+      <% if (proof) { %>
+        <img src="/images/productimg/<%=proof %>" alt="Payment Proof" class="proof-img">
+      <% } else { %>
+        No proof uploaded.
+      <% } %>
+    </div>
+
+    <a href="/" class="back-btn">⬅ Back to Home</a>
+    <%}%>
+    
+  </div>
+</body>
+</html>
