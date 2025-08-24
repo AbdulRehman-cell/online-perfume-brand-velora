@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require("express-session");
-import bodyParser from "body-parser";
+const bodyParser = require("body-parser");
 
 
 
