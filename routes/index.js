@@ -117,7 +117,7 @@ router.post('/contact', async function (req, res) {
   };
 
   try {
-    await transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
     res.render('index', { sent: 0, name: nameu, products, articles }); // Redirect to homepage or thank-you page
   } catch (error) {
