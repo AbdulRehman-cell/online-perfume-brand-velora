@@ -666,7 +666,7 @@
         <div style="width:360px;min-width:260px" id="contact">
           <h3>Contact & Orders</h3>
           <% if(sent===2){ %>
-            <form id="contactForm" class="card" action="/contact" method="post"
+            <form id="contactForm" class="card" action="/contact" method="POST"
               style="display:flex;flex-direction:column;gap:10px">
               <input name="name" placeholder="Full name" required
                 style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#fff" />
@@ -682,7 +682,7 @@
             <% }else{ %>
               <h3><b>
                   <%=name%> thanks for contacting
-                </b>.You will recieve a responsive email shortly</h3>
+                .You will recieve a responsive email shortly</b></h3>
               <%}%>
 
         </div>
