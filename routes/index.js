@@ -61,7 +61,7 @@ router.post('/contact', async function (req, res) {
   const products = await Product.find();
   const articles = await Article.find();
 
-  let emailsub = await emailmodel.create({ email: req.body.email });
+
 
   // Create transporter
   const transporter = nodemailer.createTransport({
