@@ -6,6 +6,7 @@ var Article = require("./articles");
 var upload = require("./multer");
 var passkey = require("./passkey");
 const orders = require('./orders');
+const cloudinary = require('cloudinary').v2;
 var router = express.Router();
 const session = require("express-session");
 
@@ -151,7 +152,7 @@ router.post('/admin', async (req, res) => {
   const articles = await Article.find();
 
   try {
-    const userf = await orders.findOne({ _id: id });
+    const userf = await orders.findOne({ id: id });
 
     if (!userf) {
       // ❌ No match found
@@ -174,9 +175,14 @@ router.post('/admin', async (req, res) => {
 
 router.post('/add', upload.single('image'), async (req, res) => {
   const { title, details, price, category, notes } = req.body;
-  const image = req.file.filename;
+  
+   
 
-  const newProduct = new Product({ title, details, price, image, notes });
+   const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "products",
+    });
+
+  const newProduct = new Product({ title, details, price, image:result.secure_url, notes });
   await newProduct.save();
 
   res.redirect('/');
@@ -266,6 +272,11 @@ router.post("/order/:id", upload.single('proof'), async (req, res) => {
   const { name, email, phone, address, quantity } = req.body;
   const proof = req.file.filename;
 
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "proofs",
+    });
+
+
 
   let orderrecord = await orders.create({
     email: req.body.email,
@@ -273,7 +284,7 @@ router.post("/order/:id", upload.single('proof'), async (req, res) => {
     phone: req.body.phone,
     address: req.body.address,
     quantity: req.body.quantity,
-    proof: req.file.filename,
+    proof:result.secure_url,
     price: orderm.price,
     title: orderm.title,
     status: "processing",
@@ -296,7 +307,8 @@ router.post("/order/:id", upload.single('proof'), async (req, res) => {
 
   try {
 
-    res.render("details", { price: orderm.price, title: orderm.title, quantity: quantity, admin: 9, proof: proof, name: name, email: email, phone: phone, address: address });
+    res.render("details", { price: orderm.price, title: orderm.title, quantity: quantity, admin: 9, proof: result.secure_url
+      , name: name, email: email, phone: phone, address: address });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching order");

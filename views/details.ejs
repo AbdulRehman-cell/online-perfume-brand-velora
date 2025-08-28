@@ -110,7 +110,7 @@
     <div class="detail">
       <strong>Payment Proof:</strong><br>
       <% if (order.proof) { %>
-        <img src="/images/productimg/<%= order.proof %>" alt="Payment Proof" class="proof-img">
+        <img src="<%= order.proof %>" alt="Payment Proof" class="proof-img">
       <% } else { %>
         No proof uploaded.
       <% } %>
@@ -135,7 +135,7 @@
     <div class="detail">
       <strong>Payment Proof:</strong><br>
       <% if (order.proof) { %>
-        <img src="/images/productimg/<%= order.proof %>" alt="Payment Proof" class="proof-img">
+        <img src="<%= order.proof %>" alt="Payment Proof" class="proof-img">
       <% } else { %>
         No proof uploaded.
       <% } %>
@@ -171,7 +171,7 @@
     <div class="detail">
       <strong>Payment Proof:</strong><br>
       <% if (proof) { %>
-        <img src="/images/productimg/<%=proof %>" alt="Payment Proof" class="proof-img">
+        <img src="<%=proof %>" alt="Payment Proof" class="proof-img">
       <% } else { %>
         No proof uploaded.
       <% } %>
