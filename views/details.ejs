@@ -5,94 +5,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Details</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-    .detail {
-      margin-bottom: 15px;
-    }
-    .detail strong {
-      display: inline-block;
-      width: 200px;
-      color: #444;
-    }
-    .proof-img {
-      max-width: 300px;
-      margin-top: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
-    .back-btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background: #007BFF;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    .back-btn:hover {
-      background: #0056b3;
-    }
-    .del-btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background: red;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    .back-btn:hover {
-      background: #ffffff;
-      color: #333;
-    }
+  /* Base styling */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #0d0d0d; /* deep dark background */
+  margin: 0;
+  padding: 0;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
 
-     .confirm-btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background: #00ff22;
-      color: #000000;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-  
+/* Container card */
+.container {
+  max-width: 850px;
+  margin: 50px auto;
+  background: #1a1a1a;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
+}
 
-     .inquiry-btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background: #ff5100;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    .back-btn:hover {
-      background: #ffffff;
-      color: #333;
-    }
+/* Title */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #f4b400;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+/* Order details */
+.detail {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+.detail strong {
+  display: inline-block;
+  width: 220px;
+  color: #f4b400;
+  font-weight: 600;
+}
+.detail span {
+  color: #eee;
+}
+
+/* Proof image */
+.proof-img {
+  max-width: 320px;
+  margin-top: 12px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 5px;
+  background: #111;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.proof-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(244, 180, 0, 0.3);
+}
+
+/* Buttons base */
+a {
+  text-decoration: none;
+}
+.back-btn,
+.del-btn,
+.confirm-btn,
+.inquiry-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin: 12px 8px 0 0;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Back button */
+.back-btn {
+  background: #f4b400;
+  color: #111;
+}
+.back-btn:hover {
+  background: #d99a00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(244, 180, 0, 0.3);
+}
+
+/* Delete button */
+.del-btn {
+  background: #e60000;
+  color: #fff;
+}
+.del-btn:hover {
+  background: #990000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(230, 0, 0, 0.4);
+}
+
+/* Confirm button */
+.confirm-btn {
+  background: #00c853;
+  color: #fff;
+}
+.confirm-btn:hover {
+  background: #009624;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4);
+}
+
+/* Inquiry button */
+.inquiry-btn {
+  background: #ff5722;
+  color: #fff;
+}
+.inquiry-btn:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  .detail strong {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Order Details (CONFIRMED)</h2>
+    <h2>Order Details </h2>
 
     <% if (admin === 4){ %>
        
