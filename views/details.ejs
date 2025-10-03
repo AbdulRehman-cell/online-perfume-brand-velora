@@ -25,6 +25,9 @@ body {
   --font-serif: "Playfair Display", serif;
   --font-sans: "Poppins", sans-serif;
 }
+a{
+  text-decoration:none ;
+}
     /* ---------------- HEADER ---------------- */
 header {
   display: flex;
@@ -262,7 +265,7 @@ a {
   
 /* ---------------- FOOTER ---------------- */
 footer {
-  padding: 30px 0px;
+  padding: 30px 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 1300px;
   justify-content: center;
@@ -330,11 +333,11 @@ footer .muted {
 
   <header>
       <div class="brand">
-        <div class="logo">
+        <a class="logo" href="/">
           <div class="title">Velora</div>
           <div class="subtitle">By HK</div>
         </div>
-      </div>
+      </a>
 
 
       <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" role="button">
